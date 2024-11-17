@@ -177,6 +177,43 @@
                 min-width: 150px;
             }
         }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding: 1rem;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .logo img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+            border: 3px solid #2b4c7e;
+            padding: 5px;
+            background: white;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
@@ -184,6 +221,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+            <img src="langgar.jpeg" alt="Logo Al-Musyaffa">
+        </div>
         <h1>Jadwal Piket Al-Musyaffa'</h1>
         <div class="santri-list">
             <div class="santri-card">
@@ -238,6 +278,24 @@
                 border-radius: 15px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             `;
+
+            // Add logo to JPG version
+            const logoContainer = document.createElement('div');
+            logoContainer.style.cssText = `
+                text-align: center;
+                margin-bottom: 20px;
+            `;
+            
+            const logo = document.createElement('img');
+            logo.src = 'path/to/your/logo.png';
+            logo.style.cssText = `
+                max-width: 120px;
+                height: auto;
+                margin-bottom: 15px;
+            `;
+            
+            logoContainer.appendChild(logo);
+            jpgContainer.appendChild(logoContainer);
 
             // Create title
             const jpgTitle = document.createElement('h1');
